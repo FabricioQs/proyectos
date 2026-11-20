@@ -25,6 +25,9 @@ public class Empleado {
 
 	@Column(nullable = false, length = 50)
 	private String cargo;
+	
+	@Column(nullable = true, length = 50)
+	private String departamento;
 
 	@JsonIgnore
 	@ManyToMany(mappedBy = "empleados")
@@ -36,10 +39,11 @@ public class Empleado {
 	}
 
 	// Constructor con parametros (sin colecciones)
-	public Empleado(String nombre, String cargo) {
+	public Empleado(String nombre, String cargo, String departamento) {
 		super();
 		this.nombre = nombre;
 		this.cargo = cargo;
+		this.departamento = departamento;
 	}
 
 	// Getters y Setters
@@ -61,6 +65,15 @@ public class Empleado {
 
 	public String getCargo() {
 		return cargo;
+	}
+	
+
+	public String getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(String departamento) {
+		this.departamento = departamento;
 	}
 
 	public void setCargo(String cargo) {

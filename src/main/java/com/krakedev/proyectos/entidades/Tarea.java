@@ -30,6 +30,9 @@ public class Tarea {
 
 	@Column(nullable = false)
 	private double costoEstimado;
+	
+	@Column(nullable = true, length = 50)
+	private String estado;
 
 	@ManyToOne
 	@JoinColumn(name = "proyecto_id", nullable = false)
@@ -50,13 +53,14 @@ public class Tarea {
 
 	// Constructor con parametros
 	public Tarea(String descripcion, LocalDate fechaLimite, double costoEstimado, Proyecto proyecto,
-			List<Empleado> empleados) {
+			List<Empleado> empleados, String estado) {
 		super();
 		this.descripcion = descripcion;
 		this.fechaLimite = fechaLimite;
 		this.costoEstimado = costoEstimado;
 		this.proyecto = proyecto;
 		this.empleados = empleados;
+		this.estado = estado;
 	}
 
 	// Getters y Setters
@@ -107,4 +111,14 @@ public class Tarea {
 	public void setEmpleados(List<Empleado> empleados) {
 		this.empleados = empleados;
 	}
+
+	public String getEstado() {
+		return estado;
+	}
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+	
+	
 }
